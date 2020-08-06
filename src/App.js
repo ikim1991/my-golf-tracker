@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './containers/components/Header';
+import Main from './containers/Main';
 
 function App() {
 
   return (
-    <div className="App bg-light">
-      <Header/>
+    <div className="App">
+      <Main/>
     </div>
   );
 }

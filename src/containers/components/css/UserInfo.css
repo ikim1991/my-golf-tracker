@@ -1,0 +1,7 @@
+.userinfo{
+  width: 25%;
+  height: 85%;
+  border: 25px solid;
+  border-right: 12.5px solid;
+  overflow: hidden;
+}
