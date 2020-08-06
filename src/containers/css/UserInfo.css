@@ -1,0 +1,60 @@
+.userinfo{
+  display: grid;
+  grid-template-rows: 0.75fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  width: 25%;
+  height: 85%;
+  border: 25px solid;
+  border-right: 12.5px solid;
+  overflow: hidden;
+}
+
+.user{
+  text-indent: 1em;
+  text-align: center;
+  align-self: center;
+}
+
+.handicap{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.handicap div{
+  justify-self: center;
+  align-self: center;
+}
+
+.stats{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 2em;
+  text-align: center;
+}
+
+.stats div{
+  justify-self: center;
+  align-self: center;
+}
+
+.counts{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  font-size: 2em;
+  text-align: center;
+}
+
+.counts div{
+  justify-self: center;
+  align-self: center;
+}
+
+.functionality{
+  justify-self: center;
+  align-self: center;
+}
