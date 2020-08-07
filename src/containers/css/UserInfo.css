@@ -55,6 +55,11 @@
 }
 
 .functionality{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.functionality div{
   justify-self: center;
   align-self: center;
 }

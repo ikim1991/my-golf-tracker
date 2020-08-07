@@ -27,9 +27,8 @@ function UserInfo(){
         <div>0</div>
       </div>
       <div className="functionality text-light">
-        <div>
-          <button type="button" class="btn btn-outline-light btn-lg">New Round</button>
-        </div>
+        <div><button type="button" className="btn btn-block btn-outline-light btn-lg">New Round</button></div>
+        <div><button type="button" className="d-inline-block btn btn-block btn-outline-light btn-lg">Add Course</button></div>
       </div>
     </div>
   )
