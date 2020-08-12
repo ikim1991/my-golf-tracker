@@ -3,10 +3,45 @@ import React from 'react';
 import './css/UserInfo.css';
 
 function UserInfo(){
+
+  const openModal = () => {
+    document.querySelector(".addcourse-modal").style.visibility = "visible";
+    document.querySelector(".carousel-indicators").style.visibility = "hidden";
+
+    if(document.querySelector(".new-round-modal").style.visibility === "visible"){
+      document.querySelector(".new-round-modal").style.visibility = "hidden";
+    }
+  }
+
+  const openRoundModal = () => {
+    document.querySelector(".new-round-modal").style.visibility = "visible";
+    document.querySelector(".carousel-indicators").style.visibility = "hidden";
+    document.querySelector("#new-round-form").reset()
+
+    if(document.querySelector(".addcourse-modal").style.visibility === "visible"){
+      document.querySelector(".addcourse-modal").style.visibility = "hidden";
+      document.querySelector("#course-form").reset();
+    }
+  }
+
+  const toggleSeason = () => {
+    document.querySelector(".dropdown-menu").classList.toggle("show")
+  }
+
   return(
     <div className='userinfo bg-success border-dark'>
       <div className="user text-light">
-        <h2>Player - Chris K.</h2>
+        <h2 className="username">Chris K.</h2>
+        <div className="btn-group">
+          <button type="button" className="btn btn-success dropdown-toggle" onMouseOver={toggleSeason} onMouseLeave={toggleSeason}>
+            2020
+          </button>
+          <div className="dropdown-menu" onMouseLeave={toggleSeason}>
+            <div className="dropdown-item">2020</div>
+            <div className="dropdown-item">2019</div>
+            <div className="dropdown-item">2018</div>
+          </div>
+        </div>
       </div>
       <div className="handicap text-light">
         <div>Handicap</div>
@@ -27,8 +62,8 @@ function UserInfo(){
         <div>0</div>
       </div>
       <div className="functionality text-light">
-        <div><button type="button" className="btn btn-block btn-outline-light btn-lg">New Round</button></div>
-        <div><button type="button" className="d-inline-block btn btn-block btn-outline-light btn-lg">Add Course</button></div>
+        <div><button type="button" className="btn btn-block btn-outline-light btn-lg" onClick={openRoundModal}>New Round</button></div>
+        <div><button type="button" className="d-inline-block btn btn-block btn-outline-light btn-lg" onClick={openModal}>Add Course</button></div>
       </div>
     </div>
   )
