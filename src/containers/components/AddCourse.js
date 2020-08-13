@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { checkInputFields, resetInputFields, resetRoundInputFields } from './index.js'
 
 function AddCourse(){
 
@@ -14,6 +15,9 @@ function AddCourse(){
         document.querySelector("#new-round-form").reset()
 
         document.querySelector(".carousel-indicators").style.visibility = "visible";
+
+        resetInputFields()
+        resetRoundInputFields()
       }
     })
   })
@@ -26,11 +30,19 @@ function AddCourse(){
     e.target.parentElement.style.visibility = "hidden";
     document.querySelector("#course-form").reset()
     document.querySelector(".carousel-indicators").style.visibility = "visible";
+
+    resetInputFields()
   }
 
   const submitData = (e) => {
-    e.preventDefault()
-    console.log("Data Saved!")
+
+    checkInputFields()
+
+    if(document.querySelector("#numOfHoles").value !== ""
+        &&
+      Array.from(document.querySelectorAll("#course-form input")).filter(input => input.value === "").length === 0){
+        console.log("SEND DATA")
+      }
   }
 
   const clearInputFields = (e) => {
@@ -338,7 +350,7 @@ function AddCourse(){
             )
           }
         </div>
-       <button type="submit" className="submit btn btn-success btn-lg mr-4" onSubmit={submitData}>Add Course</button>
+       <button type="button" className="submit btn btn-success btn-lg mr-4" onClick={submitData}>Add Course</button>
        <button type="button" className="reset-fields btn btn-success btn-lg ml-4" onClick={clearInputFields}>Clear All</button>
       </form>
     </div>

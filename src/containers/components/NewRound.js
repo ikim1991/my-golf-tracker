@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ScoreCard from './ScoreCard';
 import moment from 'moment';
+import { checkRoundInputFields, resetRoundInputFields } from './index';
 import { rounds, courses } from '../../data';
 
 function NewRound(){
@@ -14,9 +15,16 @@ function NewRound(){
     e.target.parentElement.style.visibility = "hidden";
     document.querySelector("#new-round-form").reset()
     document.querySelector(".carousel-indicators").style.visibility = "visible";
+    resetRoundInputFields()
   }
 
   const onCourseSelect = (e) => {
+
+    onButtonClick(false)
+    setCourse("")
+    onBoxCheck(false)
+    selectHoles([])
+
     if(e.target.value !== ""){
       setCourse(e.target.value)
     } else{
@@ -61,6 +69,10 @@ function NewRound(){
     }
   }
 
+  const onLogRound = () => {
+    checkRoundInputFields()
+  }
+
   return(
     <div className="new-round-modal bg-light">
       <div className="new-round-modal-exit text-success" onClick={closeModal}>X</div>
@@ -93,7 +105,7 @@ function NewRound(){
                         {
                           holes.map((hole, i) => <ScoreCard hole={hole} par={courses[course].par[hole]} key={i}/>)
                         }
-                        <button type="button" className="btn btn-success btn-lg m-1">Log Round</button>
+                        <button type="button" className="btn btn-success btn-lg m-1" onClick={onLogRound}>Log Round</button>
                       </div>
                     ) : (
                       <div></div>

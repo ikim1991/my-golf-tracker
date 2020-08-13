@@ -1,4 +1,5 @@
 import React from 'react';
+import { resetInputFields, resetRoundInputFields } from './components/index';
 
 import './css/UserInfo.css';
 
@@ -7,10 +8,13 @@ function UserInfo(){
   const openModal = () => {
     document.querySelector(".addcourse-modal").style.visibility = "visible";
     document.querySelector(".carousel-indicators").style.visibility = "hidden";
+    document.querySelector("#course-form").reset();
 
     if(document.querySelector(".new-round-modal").style.visibility === "visible"){
       document.querySelector(".new-round-modal").style.visibility = "hidden";
+      document.querySelector("#new-round-form").reset()
     }
+    resetRoundInputFields()
   }
 
   const openRoundModal = () => {
@@ -22,6 +26,8 @@ function UserInfo(){
       document.querySelector(".addcourse-modal").style.visibility = "hidden";
       document.querySelector("#course-form").reset();
     }
+    resetInputFields()
+
   }
 
   const toggleSeason = () => {

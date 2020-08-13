@@ -1,7 +1,6 @@
 import React from 'react';
 
 function ScoreCard(props){
-  console.log(props)
   return(
     <div className="scorecard">
       <h2 className="text-success">{props.hole}</h2>
