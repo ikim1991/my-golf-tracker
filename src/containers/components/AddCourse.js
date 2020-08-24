@@ -41,7 +41,47 @@ function AddCourse(){
     if(document.querySelector("#numOfHoles").value !== ""
         &&
       Array.from(document.querySelectorAll("#course-form input")).filter(input => input.value === "").length === 0){
-        console.log("SEND DATA")
+        document.querySelector(".submit").disabled = true
+        fetch('http://localhost:3001/newcourse', {
+          method: 'post',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify({
+            courseName: document.querySelector('input[name="courseName"]').value,
+            totalHoles: document.querySelector('select[name="numOfHoles"]').value,
+            rating: document.querySelector('input[name="courseRating"]').value,
+            slope: document.querySelector('input[name="courseSlope"]').value,
+            holes: Array.from(document.querySelectorAll('input[name="holeName"]')).map(input => input.value),
+            par: (() =>{
+              let holes = Array.from(document.querySelectorAll('input[name="holeName"]')).map(input => input.value)
+              let pars = Array.from(document.querySelectorAll('td input')).map(input => input.value)
+              let obj = {}
+              let start = 0
+              let finish = 9
+
+              for(let i = 0; i < holes.length; i++){
+                if(i=== 0){
+                  obj[holes[i]] = pars.slice(start, finish)
+                } else{
+                  start+=9
+                  finish+=9
+                  obj[holes[i]] = pars.slice(start, finish)
+                }
+              }
+
+              return obj
+
+            })()
+          })
+        }).then(res => res.json())
+        .then(data => {
+          if(data.status === "SUCCESS"){
+            console.log(data.status)
+            document.querySelector("#course-form").reset()
+            document.querySelector(".submit").disabled = false
+          }
+        })
       }
   }
 

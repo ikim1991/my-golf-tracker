@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { resetInputFields, resetRoundInputFields } from './components/index';
 
 import './css/UserInfo.css';
 
 function UserInfo(){
+
+  const [userInfo, updateUserInfo] = useState({
+    username: "Chris K.",
+    handicap: "-",
+    lowest: "-",
+    average: "-",
+    highest: "-",
+    rounds: "-",
+    courses: "-",
+    seasons: []
+  })
+
+  const [seasonsButton, changeSeason] = useState("")
+
+  useEffect(() => {
+    fetch("http://localhost:3001", {
+      method: 'get',
+      headers: {
+        'Content-type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
+
+
+
+  }, [userInfo])
 
   const openModal = () => {
     document.querySelector(".addcourse-modal").style.visibility = "visible";
@@ -37,35 +66,33 @@ function UserInfo(){
   return(
     <div className='userinfo bg-success border-dark'>
       <div className="user text-light">
-        <h2 className="username">Chris K.</h2>
+        <h2 className="username">{userInfo.username}</h2>
         <div className="btn-group">
           <button type="button" className="btn btn-success dropdown-toggle" onMouseOver={toggleSeason} onMouseLeave={toggleSeason}>
-            2020
+            {seasonsButton}
           </button>
           <div className="dropdown-menu" onMouseLeave={toggleSeason}>
-            <div className="dropdown-item">2020</div>
-            <div className="dropdown-item">2019</div>
-            <div className="dropdown-item">2018</div>
+            {userInfo.seasons.map(season => <div className="dropdown-item">{season}</div>)}
           </div>
         </div>
       </div>
       <div className="handicap text-light">
         <div>Handicap</div>
-        <div>-</div>
+        <div>{userInfo.handicap}</div>
       </div>
       <div className="stats text-light">
         <div>Best</div>
         <div>Average</div>
         <div>Worst</div>
-        <div>-</div>
-        <div>-</div>
-        <div>-</div>
+        <div>{userInfo.lowest}</div>
+        <div>{userInfo.average}</div>
+        <div>{userInfo.highest}</div>
       </div>
       <div className="counts text-light">
         <div>Rounds</div>
         <div>Courses</div>
-        <div>0</div>
-        <div>0</div>
+        <div>{userInfo.rounds}</div>
+        <div>{userInfo.courses}</div>
       </div>
       <div className="functionality text-light">
         <div><button type="button" className="btn btn-block btn-outline-light btn-lg" onClick={openRoundModal}>New Round</button></div>

@@ -26,15 +26,15 @@ function ScoreCard(props){
           </tr>
           <tr>
             <th scope="row">Score</th>
-            <td><input type="number" name="par" required/></td>
-            <td><input type="number" name="par" required/></td>
-            <td><input type="number" name="par" required/></td>
-            <td><input type="number" name="par" required/></td>
-            <td><input type="number" name="par" required/></td>
-            <td><input type="number" name="par" required/></td>
-            <td><input type="number" name="par" required/></td>
-            <td><input type="number" name="par" required/></td>
-            <td><input type="number" name="par" required/></td>
+            <td><input type="number" name="par-fill" required/></td>
+            <td><input type="number" name="par-fill" required/></td>
+            <td><input type="number" name="par-fill" required/></td>
+            <td><input type="number" name="par-fill" required/></td>
+            <td><input type="number" name="par-fill" required/></td>
+            <td><input type="number" name="par-fill" required/></td>
+            <td><input type="number" name="par-fill" required/></td>
+            <td><input type="number" name="par-fill" required/></td>
+            <td><input type="number" name="par-fill" required/></td>
           </tr>
         </tbody>
       </table>
