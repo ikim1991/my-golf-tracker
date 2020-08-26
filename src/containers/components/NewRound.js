@@ -1,35 +1,64 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ScoreCard from './ScoreCard';
 import moment from 'moment';
 import { checkRoundInputFields, resetRoundInputFields } from './index';
-import { rounds, courses } from '../../data';
+import { connect } from 'react-redux';
+import { updateCourse, updateHoles, updateBoxChecked, updateButtonClicked } from './../../actions';
 
-function NewRound(){
+const mapStateToProps = (state) => {
+  return{
+    courses: state.initializeUserInfo.courses,
+    setCourse: state.updateNewRoundState.setCourse,
+    holes: state.updateNewRoundState.holes,
+    buttonClicked: state.updateNewRoundState.buttonClicked,
+    boxChecked: state.updateNewRoundState.boxChecked
+  }
+}
 
-  const [course, setCourse] = useState("")
-  const [holes, selectHoles] = useState([])
-  const [buttonClicked, onButtonClick] = useState(false)
-  const [boxChecked, onBoxCheck] = useState(false)
+const mapDispatchToProps = (dispatch) => {
+  return{
+    onUpdateCourse: (course) => {
+      dispatch(updateCourse(course))
+    },
+    onUpdateHoles: (holes) => {
+      dispatch(updateHoles(holes))
+    },
+    onUpdateBoxChecked: (boxChecked) => {
+      dispatch(updateBoxChecked(boxChecked))
+    },
+    onUpdateButtonClicked: (buttonClicked) => {
+      dispatch(updateButtonClicked(buttonClicked))
+    }
+  }
+}
+
+function NewRound(props){
+
+  const { courses, setCourse, holes, buttonClicked, boxChecked, onUpdateCourse, onUpdateHoles, onUpdateBoxChecked, onUpdateButtonClicked } = props
 
   const closeModal = (e) => {
     e.target.parentElement.style.visibility = "hidden";
     document.querySelector("#new-round-form").reset()
     document.querySelector(".carousel-indicators").style.visibility = "visible";
     resetRoundInputFields()
+    onUpdateButtonClicked(false)
+    onUpdateCourse({})
+    onUpdateBoxChecked(false)
+    onUpdateHoles([])
   }
 
   const onCourseSelect = (e) => {
 
-    onButtonClick(false)
-    setCourse("")
-    onBoxCheck(false)
-    selectHoles([])
+    onUpdateButtonClicked(false)
+    onUpdateCourse({})
+    onUpdateBoxChecked(false)
+    onUpdateHoles([])
 
     if(e.target.value !== ""){
-      setCourse(e.target.value)
+      onUpdateCourse(courses.filter(course => course.courseName === e.target.value)[0])
     } else{
-      onButtonClick(false)
-      setCourse("")
+      onUpdateButtonClicked(false)
+      onUpdateCourse({})
     }
   }
 
@@ -41,10 +70,10 @@ function NewRound(){
     }
 
     if(checkboxes.length < 2){
-      onBoxCheck(false)
+      onUpdateBoxChecked(false)
     }
 
-    selectHoles(checkboxes.map(checkbox => checkbox.nextSibling.textContent))
+    onUpdateHoles(checkboxes.map(checkbox => checkbox.nextSibling.textContent))
   }
 
   const onCheck = (e) => {
@@ -52,19 +81,20 @@ function NewRound(){
 
     if(e.target.checked){
       if(checkboxes.length === 2){
-        onBoxCheck(true)
+        onUpdateBoxChecked(true)
       } else{
-        onBoxCheck(false)
+        onUpdateBoxChecked(false)
       }
     }
   }
 
   const handleOnButtonClick = () => {
-    if(course !== ""){
+    console.log(props)
+    if(setCourse){
       if(!buttonClicked){
-        onButtonClick(true)
+        onUpdateButtonClicked(true)
       } else{
-        onButtonClick(false)
+        onUpdateButtonClicked(false)
       }
     }
   }
@@ -108,10 +138,10 @@ function NewRound(){
       .then(data => {
         document.querySelector(".log-round").disabled = false
         document.querySelector("#new-round-form").reset()
-        onButtonClick(false)
-        setCourse("")
-        onBoxCheck(false)
-        selectHoles([])
+        onUpdateButtonClicked(false)
+        onUpdateCourse({})
+        onUpdateButtonClicked(false)
+        onUpdateHoles([])
       })
     }
   }
@@ -126,7 +156,7 @@ function NewRound(){
             <label htmlFor="course-list" type="text">Course Name:</label>
             <select className="course-list text-success" name="course-list" defaultValue = "" onChange={onCourseSelect}>
               <option></option>
-              {Object.keys(courses).map((course, i) => <option key={i}>{course}</option>)}
+              {courses.map((course, i) => <option key={i}>{course.courseName}</option>)}
             </select>
             <label htmlFor="date">Date: </label>
             <input className="date text-success" name="date" type="date" defaultValue={moment(new Date()).format('YYYY-MM-DD')}/>
@@ -138,7 +168,7 @@ function NewRound(){
                 <h2 className="text-success mt-4">Select Holes</h2>
                 <div className="checkboxes mb-4">
                   {
-                    courses[course].holes.map((hole, i) => <div className="checkbox" key={i}><input className="check" name="checkbox" type="checkbox" onChange={limitTo18Holes} onClick={onCheck}/><label className="check-label" htmlFor="checkbox">{hole}</label></div>)
+                    setCourse.holes.map((hole, i) => <div className="checkbox" key={i}><input className="check" name="checkbox" type="checkbox" onChange={limitTo18Holes} onClick={onCheck}/><label className="check-label" htmlFor="checkbox">{hole}</label></div>)
                   }
                 </div>
                 <div>
@@ -146,7 +176,7 @@ function NewRound(){
                     (boxChecked) ? (
                       <div>
                         {
-                          holes.map((hole, i) => <ScoreCard hole={hole} par={courses[course].par[hole]} key={i}/>)
+                          holes.map((hole, i) => <ScoreCard hole={hole} par={setCourse.par[hole]} key={i}/>)
                         }
                         <button type="button" className="log-round btn btn-success btn-lg m-1" onClick={onLogRound}>Log Round</button>
                       </div>
@@ -166,4 +196,4 @@ function NewRound(){
   )
 }
 
-export default NewRound;
+export default connect(mapStateToProps, mapDispatchToProps)(NewRound);

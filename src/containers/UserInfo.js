@@ -1,38 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { resetInputFields, resetRoundInputFields } from './components/index';
+import { connect } from 'react-redux';
 
 import './css/UserInfo.css';
 
-function UserInfo(){
+const mapStateToProps = (state) => {
+  return{
+    user: state.initializeUserInfo.user
+  }
+}
 
-  const [userInfo, updateUserInfo] = useState({
-    username: "Chris K.",
-    handicap: "-",
-    lowest: "-",
-    average: "-",
-    highest: "-",
-    rounds: "-",
-    courses: "-",
-    seasons: []
-  })
+function UserInfo(props){
 
-  const [seasonsButton, changeSeason] = useState("")
-
-  useEffect(() => {
-    fetch("http://localhost:3001", {
-      method: 'get',
-      headers: {
-        'Content-type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-    })
-
-
-
-  }, [userInfo])
+  const { user } = props
 
   const openModal = () => {
     document.querySelector(".addcourse-modal").style.visibility = "visible";
@@ -66,33 +46,33 @@ function UserInfo(){
   return(
     <div className='userinfo bg-success border-dark'>
       <div className="user text-light">
-        <h2 className="username">{userInfo.username}</h2>
+        <h2 className="username">{user.username}</h2>
         <div className="btn-group">
           <button type="button" className="btn btn-success dropdown-toggle" onMouseOver={toggleSeason} onMouseLeave={toggleSeason}>
-            {seasonsButton}
+
           </button>
           <div className="dropdown-menu" onMouseLeave={toggleSeason}>
-            {userInfo.seasons.map(season => <div className="dropdown-item">{season}</div>)}
+            {user.seasons.map((season, index) => <div className="dropdown-item" key={index}>{season.season}</div>)}
           </div>
         </div>
       </div>
       <div className="handicap text-light">
         <div>Handicap</div>
-        <div>{userInfo.handicap}</div>
+        <div>{user.seasons[user.seasons.length -1].handicap}</div>
       </div>
       <div className="stats text-light">
         <div>Best</div>
         <div>Average</div>
         <div>Worst</div>
-        <div>{userInfo.lowest}</div>
-        <div>{userInfo.average}</div>
-        <div>{userInfo.highest}</div>
+        <div>{user.seasons[user.seasons.length - 1].lowest}</div>
+        <div>{user.seasons[user.seasons.length - 1].average}</div>
+        <div>{user.seasons[user.seasons.length - 1].highest}</div>
       </div>
       <div className="counts text-light">
         <div>Rounds</div>
         <div>Courses</div>
-        <div>{userInfo.rounds}</div>
-        <div>{userInfo.courses}</div>
+        <div>{user.seasons[user.seasons.length - 1].rounds}</div>
+        <div>{user.seasons[user.seasons.length - 1].courses}</div>
       </div>
       <div className="functionality text-light">
         <div><button type="button" className="btn btn-block btn-outline-light btn-lg" onClick={openRoundModal}>New Round</button></div>
@@ -102,4 +82,4 @@ function UserInfo(){
   )
 }
 
-export default UserInfo;
+export default connect(mapStateToProps)(UserInfo);

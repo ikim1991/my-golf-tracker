@@ -1,7 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { checkInputFields, resetInputFields, resetRoundInputFields } from './index.js'
+import { checkInputFields, resetInputFields, resetRoundInputFields } from './index.js';
+import { connect } from 'react-redux';
+import { updateCourse, updateHoles, updateBoxChecked, updateButtonClicked } from './../../actions';
 
-function AddCourse(){
+
+const mapStateToProps = (state) => {
+  return
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    onUpdateCourse: (course) => {
+      dispatch(updateCourse(course))
+    },
+    onUpdateHoles: (holes) => {
+      dispatch(updateHoles(holes))
+    },
+    onUpdateBoxChecked: (boxChecked) => {
+      dispatch(updateBoxChecked(boxChecked))
+    },
+    onUpdateButtonClicked: (buttonClicked) => {
+      dispatch(updateButtonClicked(buttonClicked))
+    }
+  }
+}
+
+function AddCourse(props){
+
+  const { onUpdateCourse, onUpdateHoles, onUpdateBoxChecked, onUpdateButtonClicked } = props
 
   const [numOfHoles, setNumOfHoles] = useState("18")
 
@@ -18,6 +44,10 @@ function AddCourse(){
 
         resetInputFields()
         resetRoundInputFields()
+        onUpdateButtonClicked(false)
+        onUpdateCourse({})
+        onUpdateBoxChecked(false)
+        onUpdateHoles([])
       }
     })
   })
@@ -397,4 +427,4 @@ function AddCourse(){
   )
 }
 
-export default AddCourse;
+export default connect(mapStateToProps, mapDispatchToProps)(AddCourse);
