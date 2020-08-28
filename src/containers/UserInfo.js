@@ -6,13 +6,14 @@ import './css/UserInfo.css';
 
 const mapStateToProps = (state) => {
   return{
-    user: state.initializeUserInfo.user
+    user: state.initializeUserInfo.user,
+    year: state.updateInputDate.year
   }
 }
 
 function UserInfo(props){
 
-  const { user } = props
+  const { user, year } = props
 
   const openModal = () => {
     document.querySelector(".addcourse-modal").style.visibility = "visible";
@@ -49,7 +50,7 @@ function UserInfo(props){
         <h2 className="username">{user.username}</h2>
         <div className="btn-group">
           <button type="button" className="btn btn-success dropdown-toggle" onMouseOver={toggleSeason} onMouseLeave={toggleSeason}>
-
+            {year}
           </button>
           <div className="dropdown-menu" onMouseLeave={toggleSeason}>
             {user.seasons.map((season, index) => <div className="dropdown-item" key={index}>{season.season}</div>)}

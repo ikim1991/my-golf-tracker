@@ -44,7 +44,6 @@ const initialNewRoundState = {
 }
 
 export const updateNewRoundState = (state = initialNewRoundState, action={}) => {
-  console.log(action.type, action.payload)
   switch(action.type){
     case "SET_COURSE":
       return Object.assign({}, state, { setCourse: action.payload })
@@ -54,6 +53,19 @@ export const updateNewRoundState = (state = initialNewRoundState, action={}) => 
       return Object.assign({}, state, { buttonClicked: action.payload })
     case "BOX_CHECKED":
       return Object.assign({}, state, { boxChecked: action.payload })
+    default:
+      return state
+  }
+}
+
+const initialInputYearState = {
+  year: (new Date().getFullYear())
+}
+
+export const updateInputDate = (state = initialInputYearState, action={}) => {
+  switch(action.type){
+    case "CHANGE_DATE":
+      return Object.assign({}, state, { year: action.payload })
     default:
       return state
   }

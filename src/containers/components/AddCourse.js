@@ -5,7 +5,9 @@ import { updateCourse, updateHoles, updateBoxChecked, updateButtonClicked } from
 
 
 const mapStateToProps = (state) => {
-  return
+  return{
+    
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
