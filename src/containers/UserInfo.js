@@ -1,6 +1,7 @@
 import React from 'react';
 import { resetInputFields, resetRoundInputFields } from './components/index';
 import { connect } from 'react-redux';
+import { updateInputYear } from './../actions';
 
 import './css/UserInfo.css';
 
@@ -11,9 +12,18 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return{
+    onUpdateInputYear: (user, event) => {
+      console.log(user, event.target.innerText)
+      dispatch(updateInputYear(user, event.target.innerText))
+    }
+  }
+}
+
 function UserInfo(props){
 
-  const { user, year } = props
+  const { user, year, onUpdateInputYear } = props
 
   const openModal = () => {
     document.querySelector(".addcourse-modal").style.visibility = "visible";
@@ -53,7 +63,7 @@ function UserInfo(props){
             {year}
           </button>
           <div className="dropdown-menu" onMouseLeave={toggleSeason}>
-            {user.seasons.map((season, index) => <div className="dropdown-item" key={index}>{season.season}</div>)}
+            {user.seasons.map((season, index) => <div className="dropdown-item" key={index} onClick={(e) => {onUpdateInputYear(user, e)}}>{season.season}</div>)}
           </div>
         </div>
       </div>
@@ -83,4 +93,4 @@ function UserInfo(props){
   )
 }
 
-export default connect(mapStateToProps)(UserInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);

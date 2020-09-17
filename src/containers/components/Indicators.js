@@ -1,13 +1,40 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateSlide } from './../../actions';
 
-function Indicators(){
+const mapStateToProps = (state) => {
+  return{
+    slide: state.updateSlideNumber.slide,
+    slides: state.updateSlideNumber.slides
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    onUpdateSlide: (e) => {
+      const slideNumber = parseInt(e.target.getAttribute("value"))
+      dispatch(updateSlide(slideNumber))
+    }
+  }
+}
+
+function Indicators(props){
+
+  const { onUpdateSlide, slides, slide } = props
+
   return(
     <ol className="carousel-indicators">
-      <li className="active"></li>
-      <li></li>
-      <li></li>
+      {
+        slides.map(sl => {
+          if(sl === slide){
+            return(<li className="active" value={sl} key={sl} onClick={onUpdateSlide}></li>)
+          } else{
+            return(<li value={sl} key={sl} onClick={onUpdateSlide}></li>)
+          }
+        })
+      }
     </ol>
   )
 }
 
-export default Indicators;
+export default connect(mapStateToProps, mapDispatchToProps)(Indicators);

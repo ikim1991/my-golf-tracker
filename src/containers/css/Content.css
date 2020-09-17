@@ -215,6 +215,70 @@
   margin-left: 10px;
 }
 
+
+/* Analytics.js */
+.analytics{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  font-size: 1.5em;
+  overflow-y: hidden;
+}
+.analytics:hover{
+  overflow-y: scroll;
+}
+.analytics-header{
+  font-weight: bold;
+  text-align: center;
+}
+.analytics-numbers-grid{
+  display: grid;
+  width: 100%;
+  margin-top: 25px;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+}
+.analytics-numbers-items{
+  width: 100%;
+  font-size: 1.3rem;
+  text-align: center;
+}
+.analytics-plots{
+  width: 100%;
+  margin-top: 25px;
+  text-align: center;
+}
+
+/* AnalyticsScoreCard.js */
+.analytics-scorecard{
+  width: 100%;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.analytics-scorecard table, .analytics-scorecard td, .analytics-scorecard th {
+  border: 1px solid black;
+}
+
+.analytics-scorecard-hole{
+  width: 3%;
+}
+.analytics-scorecard-par{
+  width: 5%;
+}
+.analytics-scorecard-total{
+  width: 5%;
+}
+.analytics-scorecard-score{
+  width: 5%;
+}
+
+#myBarChart, #myLineChart{
+  width: 100%;
+}
+
 /* Custom Scrollbar */
 /* width */
 ::-webkit-scrollbar {
