@@ -47,8 +47,8 @@ function AnalyticsLine(props){
                 color: "rgba(0, 0, 0, 0)",
               },
                 ticks: {
-                    suggestedMin: 50,
-                    suggestedMax: 100
+                    suggestedMin: 0,
+                    suggestedMax: 20
                 }
             }]
         }

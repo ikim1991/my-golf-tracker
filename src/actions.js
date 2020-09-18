@@ -7,7 +7,13 @@ export const initializingUserInfo = () => (dispatch) => {
     }
   })
   .then(res => res.json())
-  .then(data => dispatch({ type: "GET_SUCCESS", payload: data}))
+  .then(data => {
+    dispatch({ type: "GET_SUCCESS", payload: data})
+    dispatch({type: "CHANGE_DATE", payload: data})
+    dispatch({type: "CHANGE_SCORE_COUNT", payload: data})
+    dispatch({type: "CHANGE_LINE_PLOT_STATE", payload: data})
+    dispatch({type: "CHANGE_SCORECARD_STATE", payload: data})
+  })
   .catch(error => dispatch({ type: "GET_ERROR", payload: error}))
 }
 
@@ -22,6 +28,7 @@ export const updateInputYear = (user, year) => (dispatch) => {
   })
   .then(res => res.json())
   .then((data) => {
+    console.log(data)
     dispatch({type: "GET_SUCCESS", payload: data})
     dispatch({type: "CHANGE_DATE", payload: data})
     dispatch({type: "CHANGE_SCORE_COUNT", payload: data})

@@ -67,7 +67,7 @@ const initialInputYearState = {
 export const updateInputDate = (state = initialInputYearState, action={}) => {
   switch(action.type){
     case "CHANGE_DATE":
-      return Object.assign({}, state, { year: action.payload })
+      return Object.assign({}, state, { year: action.payload.year })
     default:
       return state
   }
@@ -102,7 +102,7 @@ const initialScoreCountState = {
 export const updateScoreCount = (state = initialScoreCountState, action={}) => {
   switch(action.type){
     case "CHANGE_SCORE_COUNT":
-      return Object.assign({}, state, { scoreCount: action.payload })
+      return Object.assign({}, state, { scoreCount: action.payload.scoreCount })
     default:
       return state
   }
@@ -118,7 +118,7 @@ const initialLinePlotState = {
 export const updateLinePlotState = (state = initialLinePlotState, action = {}) => {
   switch(action.type){
     case "CHANGE_LINE_PLOT_STATE":
-      return Object.assign({}, state, { linePlot: action.payload })
+      return Object.assign({}, state, { linePlot: action.payload.linePlot })
     default:
       return state
   }
@@ -131,7 +131,7 @@ const initialScorecardState = {
 export const updateScorecardState = (state = initialScorecardState, action = {}) =>{
   switch(action.type){
     case "CHANGE_SCORECARD_STATE":
-      return Object.assign({}, state, { scorecard: action.payload })
+      return Object.assign({}, state, { scorecard: action.payload.scorecard })
     default:
       return state
   }

@@ -15,7 +15,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return{
     onUpdateInputYear: (user, event) => {
-      console.log(user, event.target.innerText)
       dispatch(updateInputYear(user, event.target.innerText))
     }
   }
