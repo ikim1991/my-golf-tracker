@@ -107,7 +107,7 @@ function NewRound(props){
 
     if(Array.from(document.querySelectorAll("input[name='par-fill']")).filter(input => input.value === "").length === 0){
       document.querySelector(".log-round").disabled = true
-      fetch('http://localhost:3001/newround', {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/newround`, {
         method: 'post',
         headers: {
           'Content-type': 'application/json'

@@ -77,7 +77,7 @@ function AddCourse(props){
         &&
       Array.from(document.querySelectorAll("#course-form input")).filter(input => input.value === "").length === 0){
         document.querySelector(".submit").disabled = true
-        fetch('http://localhost:3001/newcourse', {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/newcourse`, {
           method: 'post',
           headers: {
             'Content-type': 'application/json'

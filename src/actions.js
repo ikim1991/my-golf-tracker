@@ -1,6 +1,6 @@
 export const initializingUserInfo = () => (dispatch) => {
   dispatch({type: "GET_PENDING"})
-  fetch("http://localhost:3001", {
+  fetch(process.env.REACT_APP_BACKEND_URL, {
     method: 'get',
     headers: {
       'Content-type': 'application/json'
@@ -19,7 +19,7 @@ export const initializingUserInfo = () => (dispatch) => {
 
 export const updateInputYear = (user, year) => (dispatch) => {
   dispatch({type: "GET_PENDING"})
-  fetch("http://localhost:3001/season", {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/season`, {
     method: 'post',
     headers:{
       'Content-type': 'application/json'
