@@ -55,11 +55,11 @@ function Carousel(props){
     switch(slide){
       case 1:
         return(
-          <AnalyticsBar/>
+          <AnalyticsLine/>
         )
       case 2:
         return(
-          <AnalyticsLine/>
+          <AnalyticsBar/>
         )
       case 3:
         return(

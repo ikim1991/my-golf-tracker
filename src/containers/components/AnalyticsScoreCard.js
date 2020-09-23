@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateScorecard } from './../../actions';
+import moment from 'moment';
 
 const mapStateToProps = (state) => {
   return{
@@ -8,17 +8,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return{
-    onUpdateScorecard: (scorecard) => {
-      dispatch(updateScorecard(scorecard))
-    }
-  }
-}
-
 function AnalyticsScoreCard(props){
 
-  const { scorecard, onUpdateScorecard } = props
+  const { scorecard } = props
 
   return(
     <div className="analytics">
@@ -62,7 +54,17 @@ function AnalyticsScoreCard(props){
       <tbody>
         {scorecard.map((score, index) => {
           return(
-            <tr key={index}>{score.map((s, i) => <td key={i}>{s}</td>)}</tr>
+            <tr key={index}>{score.map((s, i) => {
+              if(i === 0){
+                return(
+                  <td key={i}>{moment(s).format('L')}</td>
+                )
+              } else{
+                return(
+                  <td key={i}>{s}</td>
+                )
+              }
+            })}</tr>
           )
         })}
       </tbody>
@@ -71,4 +73,4 @@ function AnalyticsScoreCard(props){
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnalyticsScoreCard);
+export default connect(mapStateToProps)(AnalyticsScoreCard);

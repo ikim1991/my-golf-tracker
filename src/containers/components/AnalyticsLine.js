@@ -1,17 +1,11 @@
 import React, { useEffect } from 'react';
 import Chart from 'chart.js';
+import moment from 'moment';
 import { connect } from 'react-redux';
-import { updateLinePlot } from './../../actions';
 
 const mapStateToProps = (state) => {
   return{
     linePlot: state.updateLinePlotState.linePlot
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return{
-
   }
 }
 
@@ -24,7 +18,7 @@ function AnalyticsLine(props){
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: linePlot.xAxis,
+        labels: linePlot.xAxis.map((point) => moment(point).format('L')),
         datasets: [{
           data: linePlot.yAxis,
           backgroundColor: 'rgba(102, 255, 102, 0.8)',
@@ -66,4 +60,4 @@ function AnalyticsLine(props){
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnalyticsLine);
+export default connect(mapStateToProps)(AnalyticsLine);

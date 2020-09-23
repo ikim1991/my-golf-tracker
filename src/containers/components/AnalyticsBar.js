@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Chart from 'chart.js';
 import { connect } from 'react-redux';
-import { updateCount } from './../../actions';
 
 const mapStateToProps = (state) => {
   return{
@@ -9,17 +8,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return{
-    onUpdateCount: (scoreCount) => {
-      dispatch(updateCount(scoreCount))
-    }
-  }
-}
-
 function AnalyticsBar(props){
 
-  const { scoreCount, onUpdateCount } = props
+  const { scoreCount } = props
 
   useEffect(() => {
     const ctx = document.querySelector('#myBarChart')
@@ -45,17 +36,7 @@ function AnalyticsBar(props){
             '#00ff99',
             '#0000ff',
             '#6600ff'
-          ],
-          borderColor: [
-            '#ff0000',
-            '#ff9900',
-            '#ffff00',
-            '#00cc00',
-            '#00ff99',
-            '#0000ff',
-            '#6600ff'
-          ],
-          borderWidth: 1
+          ]
         }],
 
       },
@@ -109,4 +90,4 @@ function AnalyticsBar(props){
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnalyticsBar);
+export default connect(mapStateToProps)(AnalyticsBar);

@@ -3,7 +3,7 @@ import ScoreCard from './ScoreCard';
 import moment from 'moment';
 import { checkRoundInputFields, resetRoundInputFields } from './index';
 import { connect } from 'react-redux';
-import { updateCourse, updateHoles, updateBoxChecked, updateButtonClicked } from './../../actions';
+import { updateCourse, updateHoles, updateBoxChecked, updateButtonClicked, initializingUserInfo } from './../../actions';
 
 const mapStateToProps = (state) => {
   return{
@@ -28,13 +28,16 @@ const mapDispatchToProps = (dispatch) => {
     },
     onUpdateButtonClicked: (buttonClicked) => {
       dispatch(updateButtonClicked(buttonClicked))
+    },
+    onInitializingUserInfo: () => {
+      dispatch(initializingUserInfo())
     }
   }
 }
 
 function NewRound(props){
 
-  const { courses, setCourse, holes, buttonClicked, boxChecked, onUpdateCourse, onUpdateHoles, onUpdateBoxChecked, onUpdateButtonClicked } = props
+  const { courses, setCourse, holes, buttonClicked, boxChecked, onUpdateCourse, onUpdateHoles, onUpdateBoxChecked, onUpdateButtonClicked, onInitializingUserInfo } = props
 
   const closeModal = (e) => {
     e.target.parentElement.style.visibility = "hidden";
@@ -143,6 +146,7 @@ function NewRound(props){
         onUpdateButtonClicked(false)
         onUpdateHoles([])
       })
+      .then(() => onInitializingUserInfo())
     }
   }
 

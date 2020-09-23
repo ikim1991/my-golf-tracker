@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { checkInputFields, resetInputFields, resetRoundInputFields } from './index.js';
 import { connect } from 'react-redux';
-import { updateCourse, updateHoles, updateBoxChecked, updateButtonClicked } from './../../actions';
+import { updateCourse, updateHoles, updateBoxChecked, updateButtonClicked, initializingUserInfo } from './../../actions';
 
 
 const mapStateToProps = (state) => {
   return{
-    
+
   }
 }
 
@@ -23,13 +23,16 @@ const mapDispatchToProps = (dispatch) => {
     },
     onUpdateButtonClicked: (buttonClicked) => {
       dispatch(updateButtonClicked(buttonClicked))
+    },
+    onInitializingUserInfo: () => {
+      dispatch(initializingUserInfo())
     }
   }
 }
 
 function AddCourse(props){
 
-  const { onUpdateCourse, onUpdateHoles, onUpdateBoxChecked, onUpdateButtonClicked } = props
+  const { onUpdateCourse, onUpdateHoles, onUpdateBoxChecked, onUpdateButtonClicked, onInitializingUserInfo } = props
 
   const [numOfHoles, setNumOfHoles] = useState("18")
 
@@ -114,6 +117,7 @@ function AddCourse(props){
             document.querySelector(".submit").disabled = false
           }
         })
+        .then(() => onInitializingUserInfo())
       }
   }
 
