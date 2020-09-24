@@ -116,10 +116,20 @@ function NewRound(props){
           playedOn: document.querySelector(".date").value,
           season: (document.querySelector(".date").value.split("-")[0]),
           course: document.querySelector(".course-list").value,
-          holes: Array.from(document.querySelectorAll(".check-label")).map(input => input.innerText),
+          holes: Array.from(document.querySelectorAll(".check")).map(input => {
+            if(input.checked){
+              return input.nextSibling.innerText
+            }
+            return null
+          }).filter(item => item),
           totalScore: Array.from(document.querySelectorAll("input[name='par-fill']")).map(input => parseInt(input.value)).reduce((total, num) => total + num),
           scores: (() => {
-            let holes = Array.from(document.querySelectorAll(".check-label")).map(input => input.innerText)
+            let holes = Array.from(document.querySelectorAll(".check")).map(input => {
+              if(input.checked){
+                return input.nextSibling.innerText
+              }
+              return null
+            }).filter(item => item)
             let scores = Array.from(document.querySelectorAll("input[name='par-fill']")).map(input => input.value)
             let obj = {}
             let start = 0
