@@ -175,7 +175,7 @@ function NewRound(props){
             <label htmlFor="date">Date: </label>
             <input className="date text-success" name="date" type="date" defaultValue={moment(new Date()).format('YYYY-MM-DD')}/>
           </div>
-          <button type="button" className="btn btn-success btn-lg m-1" onClick={handleOnButtonClick}>Show Course</button>
+          <button type="button" className="show-courses btn btn-success btn-lg m-1" onClick={handleOnButtonClick}>Show Course</button>
           {
             (buttonClicked) ? (
               <div className="show-scorecard">

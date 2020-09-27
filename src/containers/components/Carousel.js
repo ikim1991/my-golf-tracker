@@ -1,5 +1,4 @@
 import React from 'react';
-import Slide from './Slide';
 import Indicators from './Indicators';
 import AddCourse from './AddCourse';
 import NewRound from './NewRound';
@@ -78,7 +77,6 @@ function Carousel(props){
       <NewRound/>
       {renderSwitch()}
       <Indicators/>
-      <Slide/>
       <div className="prev" value="-1" onClick={onPrev}>&#10094;</div>
       <div className="next" value="1" onClick={onNext}>&#10095;</div>
     </div>

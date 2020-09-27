@@ -18,7 +18,7 @@ function AnalyticsLine(props){
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: linePlot.xAxis.map((point) => moment(point).format('L')),
+        labels: linePlot.xAxis.map((point) => moment(point).format('MMM DD')),
         datasets: [{
           data: linePlot.yAxis,
           backgroundColor: 'rgba(102, 255, 102, 0.8)',

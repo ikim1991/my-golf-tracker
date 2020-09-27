@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Main from './containers/Main';
 import { connect } from 'react-redux';

@@ -94,3 +94,18 @@
   justify-self: center;
   align-self: center;
 }
+
+@media only screen and (max-width: 1366px){
+  .handicap{
+    font-size: 1.75em;
+  }
+  .stats{
+    font-size: 1.25em;
+  }
+  .counts{
+    font-size: 1.25em;
+  }
+  .func-button{
+    font-size: 1em;
+  }
+}

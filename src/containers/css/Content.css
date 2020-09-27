@@ -279,6 +279,36 @@
   width: 100%;
 }
 
+@media only screen and (max-width: 1366px){
+  .addcourse-modal{
+    font-size: 1em;
+  }
+  .table tbody tr td input  {
+    width: 27.5%;
+  }
+  .add-course h2{
+    font-size: 1.5em;
+  }
+  .submit, .reset-fields{
+    font-size: 1em;
+  }
+  .new-round-modal{
+    font-size: 1em;
+  }
+  .show-courses{
+    font-size: 1em;
+  }
+  .new-round h2{
+    font-size: 1.5em;
+  }
+  .scorecard h2{
+    font-size: 1.25em;
+  }
+  .log-round{
+    font-size: 1em;
+  }
+}
+
 /* Custom Scrollbar */
 /* width */
 ::-webkit-scrollbar {

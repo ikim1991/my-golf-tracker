@@ -85,8 +85,8 @@ function UserInfo(props){
         <div>{user.seasons[user.seasons.length - 1].courses}</div>
       </div>
       <div className="functionality text-light">
-        <div><button type="button" className="btn btn-block btn-outline-light btn-lg" onClick={openRoundModal}>New Round</button></div>
-        <div><button type="button" className="d-inline-block btn btn-block btn-outline-light btn-lg" onClick={openModal}>Add Course</button></div>
+        <div><button type="button" className="func-button btn btn-block btn-outline-light btn-lg" onClick={openRoundModal}>New Round</button></div>
+        <div><button type="button" className="func-button d-inline-block btn btn-block btn-outline-light btn-lg" onClick={openModal}>Add Course</button></div>
       </div>
     </div>
   )
