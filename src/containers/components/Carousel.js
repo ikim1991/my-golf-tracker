@@ -34,8 +34,6 @@ function Carousel(props){
     } else{
       onUpdateSlide(newSlide)
     }
-
-    console.log(slide)
   }
 
   const onPrev = (e) => {
@@ -46,8 +44,6 @@ function Carousel(props){
     } else{
       onUpdateSlide(newSlide)
     }
-
-    console.log(slide)
   }
 
   const renderSwitch = () => {

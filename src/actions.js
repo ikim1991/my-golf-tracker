@@ -1,6 +1,6 @@
 export const initializingUserInfo = () => (dispatch) => {
   dispatch({type: "GET_PENDING"})
-  fetch(process.env.REACT_APP_BACKEND_URL, {
+  fetch(process.env.REACT_APP_BACKEND_URL || "https://ikim91-golf-tracker-api.herokuapp.com", {
     method: 'get',
     headers: {
       'Content-type': 'application/json'
@@ -19,7 +19,7 @@ export const initializingUserInfo = () => (dispatch) => {
 
 export const updateInputYear = (user, year) => (dispatch) => {
   dispatch({type: "GET_PENDING"})
-  fetch(`${process.env.REACT_APP_BACKEND_URL}/season`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL || "https://ikim91-golf-tracker-api.herokuapp.com"}/season`, {
     method: 'post',
     headers:{
       'Content-type': 'application/json'

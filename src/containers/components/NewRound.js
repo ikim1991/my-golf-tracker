@@ -92,7 +92,6 @@ function NewRound(props){
   }
 
   const handleOnButtonClick = () => {
-    console.log(props)
     if(setCourse){
       if(!buttonClicked){
         onUpdateButtonClicked(true)
@@ -107,7 +106,7 @@ function NewRound(props){
 
     if(Array.from(document.querySelectorAll("input[name='par-fill']")).filter(input => input.value === "").length === 0){
       document.querySelector(".log-round").disabled = true
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/newround`, {
+      fetch(`${process.env.REACT_APP_BACKEND_URL || "https://ikim91-golf-tracker-api.herokuapp.com"}/newround`, {
         method: 'post',
         headers: {
           'Content-type': 'application/json'
