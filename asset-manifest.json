@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/my-golf-tracker/static/css/main.96c324ae.chunk.css",
-    "main.js": "/my-golf-tracker/static/js/main.eebef384.chunk.js",
-    "main.js.map": "/my-golf-tracker/static/js/main.eebef384.chunk.js.map",
+    "main.css": "/my-golf-tracker/static/css/main.b623ae25.chunk.css",
+    "main.js": "/my-golf-tracker/static/js/main.46e8094b.chunk.js",
+    "main.js.map": "/my-golf-tracker/static/js/main.46e8094b.chunk.js.map",
     "runtime-main.js": "/my-golf-tracker/static/js/runtime-main.45246bd3.js",
     "runtime-main.js.map": "/my-golf-tracker/static/js/runtime-main.45246bd3.js.map",
-    "static/css/2.ed439b8d.chunk.css": "/my-golf-tracker/static/css/2.ed439b8d.chunk.css",
-    "static/js/2.b9a71d4b.chunk.js": "/my-golf-tracker/static/js/2.b9a71d4b.chunk.js",
-    "static/js/2.b9a71d4b.chunk.js.map": "/my-golf-tracker/static/js/2.b9a71d4b.chunk.js.map",
+    "static/css/2.c1245289.chunk.css": "/my-golf-tracker/static/css/2.c1245289.chunk.css",
+    "static/js/2.0b03236b.chunk.js": "/my-golf-tracker/static/js/2.0b03236b.chunk.js",
+    "static/js/2.0b03236b.chunk.js.map": "/my-golf-tracker/static/js/2.0b03236b.chunk.js.map",
     "index.html": "/my-golf-tracker/index.html",
-    "precache-manifest.c01914db3eb72df34e8164774be7c3c0.js": "/my-golf-tracker/precache-manifest.c01914db3eb72df34e8164774be7c3c0.js",
+    "precache-manifest.1fcc32bb53d0f987beb35d258cc9ffd8.js": "/my-golf-tracker/precache-manifest.1fcc32bb53d0f987beb35d258cc9ffd8.js",
     "service-worker.js": "/my-golf-tracker/service-worker.js",
-    "static/css/2.ed439b8d.chunk.css.map": "/my-golf-tracker/static/css/2.ed439b8d.chunk.css.map",
-    "static/css/main.96c324ae.chunk.css.map": "/my-golf-tracker/static/css/main.96c324ae.chunk.css.map",
-    "static/js/2.b9a71d4b.chunk.js.LICENSE.txt": "/my-golf-tracker/static/js/2.b9a71d4b.chunk.js.LICENSE.txt"
+    "static/css/2.c1245289.chunk.css.map": "/my-golf-tracker/static/css/2.c1245289.chunk.css.map",
+    "static/css/main.b623ae25.chunk.css.map": "/my-golf-tracker/static/css/main.b623ae25.chunk.css.map",
+    "static/js/2.0b03236b.chunk.js.LICENSE.txt": "/my-golf-tracker/static/js/2.0b03236b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.45246bd3.js",
-    "static/css/2.ed439b8d.chunk.css",
-    "static/js/2.b9a71d4b.chunk.js",
-    "static/css/main.96c324ae.chunk.css",
-    "static/js/main.eebef384.chunk.js"
+    "static/css/2.c1245289.chunk.css",
+    "static/js/2.0b03236b.chunk.js",
+    "static/css/main.b623ae25.chunk.css",
+    "static/js/main.46e8094b.chunk.js"
   ]
 }

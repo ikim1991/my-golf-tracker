@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/my-golf-tracker/precache-manifest.c01914db3eb72df34e8164774be7c3c0.js"
+  "/my-golf-tracker/precache-manifest.1fcc32bb53d0f987beb35d258cc9ffd8.js"
 );
 
 self.addEventListener('message', (event) => {
