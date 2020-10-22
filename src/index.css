@@ -8,6 +8,12 @@ body {
   user-select: none;
 }
 
+.loader-spinner{
+  position: relative;
+  text-align: center;
+  top: 40%;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

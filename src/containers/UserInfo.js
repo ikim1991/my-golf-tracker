@@ -2,13 +2,15 @@ import React from 'react';
 import { resetInputFields, resetRoundInputFields } from './components/index';
 import { connect } from 'react-redux';
 import { updateInputYear } from './../actions';
+import Loader from 'react-loader-spinner';
 
 import './css/UserInfo.css';
 
 const mapStateToProps = (state) => {
   return{
     user: state.initializeUserInfo.user,
-    year: state.updateInputDate.year
+    year: state.updateInputDate.year,
+    isPending: state.initializeUserInfo.isPending
   }
 }
 
@@ -22,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function UserInfo(props){
 
-  const { user, year, onUpdateInputYear } = props
+  const { user, year, onUpdateInputYear, isPending } = props
 
   const openModal = () => {
     document.querySelector(".addcourse-modal").style.visibility = "visible";
@@ -53,43 +55,58 @@ function UserInfo(props){
     document.querySelector(".dropdown-menu").classList.toggle("show")
   }
 
-  return(
-    <div className='userinfo bg-success border-dark'>
-      <div className="user text-light">
-        <h2 className="username">{user.username}</h2>
-        <div className="btn-group">
-          <button type="button" className="btn btn-success dropdown-toggle" onMouseOver={toggleSeason} onMouseLeave={toggleSeason}>
-            {year}
-          </button>
-          <div className="dropdown-menu" onMouseLeave={toggleSeason}>
-            {user.seasons.map((season, index) => <div className="dropdown-item" key={index} onClick={(e) => {onUpdateInputYear(user, e)}}>{season.season}</div>)}
-          </div>
+  if(isPending){
+    return(
+      <div className='userinfo bg-success border-dark'>
+        <div className='loader-spinner'>
+          <Loader
+           type="Audio"
+           color="#f8f9fa"
+           height={100}
+           width={100}
+         />
         </div>
       </div>
-      <div className="handicap text-light">
-        <div>Handicap</div>
-        <div>{user.seasons[user.seasons.length -1].handicap}</div>
+    )
+  } else{
+    return(
+      <div className='userinfo bg-success border-dark'>
+        <div className="user text-light">
+          <h2 className="username">{user.username}</h2>
+          <div className="btn-group">
+            <button type="button" className="btn btn-success dropdown-toggle" onMouseOver={toggleSeason} onMouseLeave={toggleSeason}>
+              {year}
+            </button>
+            <div className="dropdown-menu" onMouseLeave={toggleSeason}>
+              {user.seasons.map((season, index) => <div className="dropdown-item" key={index} onClick={(e) => {onUpdateInputYear(user, e)}}>{season.season}</div>)}
+            </div>
+          </div>
+        </div>
+        <div className="handicap text-light">
+          <div>Handicap</div>
+          <div>{user.seasons[user.seasons.length -1].handicap}</div>
+        </div>
+        <div className="stats text-light">
+          <div>Best</div>
+          <div>Average</div>
+          <div>Worst</div>
+          <div>{user.seasons[user.seasons.length - 1].lowest}</div>
+          <div>{user.seasons[user.seasons.length - 1].average}</div>
+          <div>{user.seasons[user.seasons.length - 1].highest}</div>
+        </div>
+        <div className="counts text-light">
+          <div>Rounds</div>
+          <div>Courses</div>
+          <div>{user.seasons[user.seasons.length - 1].rounds}</div>
+          <div>{user.seasons[user.seasons.length - 1].courses}</div>
+        </div>
+        <div className="functionality text-light">
+          <div><button type="button" className="func-button btn btn-block btn-outline-light btn-lg" onClick={openRoundModal}>New Round</button></div>
+          <div><button type="button" className="func-button d-inline-block btn btn-block btn-outline-light btn-lg" onClick={openModal}>Add Course</button></div>
+        </div>
       </div>
-      <div className="stats text-light">
-        <div>Best</div>
-        <div>Average</div>
-        <div>Worst</div>
-        <div>{user.seasons[user.seasons.length - 1].lowest}</div>
-        <div>{user.seasons[user.seasons.length - 1].average}</div>
-        <div>{user.seasons[user.seasons.length - 1].highest}</div>
-      </div>
-      <div className="counts text-light">
-        <div>Rounds</div>
-        <div>Courses</div>
-        <div>{user.seasons[user.seasons.length - 1].rounds}</div>
-        <div>{user.seasons[user.seasons.length - 1].courses}</div>
-      </div>
-      <div className="functionality text-light">
-        <div><button type="button" className="func-button btn btn-block btn-outline-light btn-lg" onClick={openRoundModal}>New Round</button></div>
-        <div><button type="button" className="func-button d-inline-block btn btn-block btn-outline-light btn-lg" onClick={openModal}>Add Course</button></div>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);
