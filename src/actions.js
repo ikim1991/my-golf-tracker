@@ -14,6 +14,12 @@ export const initializingUserInfo = () => (dispatch) => {
     dispatch({type: "CHANGE_LINE_PLOT_STATE", payload: data})
     dispatch({type: "CHANGE_SCORECARD_STATE", payload: data})
   })
+  .then(() => {
+    dispatch({type: "CHANGE_SLIDE", payload: 3})
+  })
+  .then(() => {
+    dispatch({type: "CHANGE_SLIDE", payload: 1})
+  })
   .catch(error => dispatch({ type: "GET_ERROR", payload: error}))
 }
 
@@ -34,6 +40,12 @@ export const updateInputYear = (user, year) => (dispatch) => {
     dispatch({type: "CHANGE_SCORE_COUNT", payload: data})
     dispatch({type: "CHANGE_LINE_PLOT_STATE", payload: data})
     dispatch({type: "CHANGE_SCORECARD_STATE", payload: data})
+  })
+  .then(() => {
+    dispatch({type: "CHANGE_SLIDE", payload: 3})
+  })
+  .then(() => {
+    dispatch({type: "CHANGE_SLIDE", payload: 1})
   })
   .catch(error => dispatch({ type: "GET_ERROR", payload: error}))
 }
