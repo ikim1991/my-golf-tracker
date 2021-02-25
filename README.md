@@ -1,22 +1,21 @@
-# My Golf Tracker Front-end
+# My Golf Tracker  
 
 ### Summary  
 
 As an avid golfer wanting to improve his game, I developed this application to help visualize and keep track of my progress.  
 
-The front-end web application is hosted on GitHub using GitHub pages.  
-[Website Link](https://ikim1991.github.io/my-golf-tracker/)  
+To view the coding documentation for this web application, refer to the link below:  
+[Coding Documentation Link](https://ikim1991.github.io/coding-documentation/#/golf-tracker/)  
 
-The back-end application is hosted on Heroku using its free-tier plan. This may cause it to take a few seconds to load as the app is put to sleep after 30 minutes of inactivity.  
-[GitHub Repo Link](https://github.com/ikim1991/my-golf-tracker-api)  
+The application is deployed through GitHub Pages and Heroku. The application can be found in the link below:  
+[Production Website Link](https://ikim1991.github.io/my-golf-tracker/)  
 
-The Front-end was built using React and Redux.  
+The source code for the server side can be found in the link below:  
+[Server Side Source Code](https://github.com/ikim1991/my-golf-tracker-api/)  
 
-The Golf Tracker application lets the user log all their rounds by the season. This data is used to keep track of the user's progress and visualizes the data. It displays a summary of the user's info on the side while the main content of the page uses pagination to navigate through 3 figures created using Chart.js.  
+The back-end application is hosted on Heroku using its free-tier plan. This may cause the first login to take a few seconds to load as the app is put to sleep after 30 minutes of inactivity.  
 
-A 16:9 aspect ratio resolution is recommended.  
-The app is currently not supported on mobile and tablets.  
-Minimum screen resolution width of 1024px required.  
+The web application is currently not supported on mobile/tablet.  
 
 ### Images  
 
